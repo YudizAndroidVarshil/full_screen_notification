@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="blue">#086AA1</color>
+    <color name="titleColor">#5F7388</color>
+    <color name="valueColor">#242424</color>
+    <color name="lightBlue">#C5E4F3</color>
+    <color name="acceptButton">#D1FFD7</color>
+    <color name="rejectButton">#FFE0E0</color>
+    <color name="ignoreButton">#FEFAD4</color>
+    <color name="acceptClockoutButton">#EDF7FD</color>
+    <color name="acceptTextColor">#147261</color>
+    <color name="rejectTextColor">#B83232</color>
+    <color name="ignoreTextColor">#5E4F05</color>
+    <color name="acceptClockoutText">#086AA1</color>
+
+
+</resources>
