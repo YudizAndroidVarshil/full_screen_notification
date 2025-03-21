@@ -6,6 +6,8 @@
   final String from;
   final String purpose;
   final String comments;
+  final String email;
+  final String logo;
 
 
   NotificationDetail({
@@ -16,6 +18,8 @@
     required this.from,
     required this.purpose,
     required this.comments,
+    required this.email,
+    required this.logo,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,6 +31,8 @@
       'from' : from,
       'purpose' : purpose,
       'comments' : comments,
+      'email' : email,
+      'logo' : logo,
     };
   }
 
@@ -39,6 +45,8 @@
       from: map['from'] ?? '',
       purpose: map['purpose'] ?? '',
       comments: map['comments'] ?? '',
+      email: map['email'] ?? '',
+      logo: map['logo'] ?? '',
     );
   }
 }

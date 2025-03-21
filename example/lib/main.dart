@@ -35,13 +35,19 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> _handleNativeCall(MethodCall call) async {
     if (call.method == "acceptButtonClick") {
-      print("VRS Accept button clicked!");
+      final spinnerValue = call.arguments as String?;
+      print("VRS Accept button clicked with spinner value: $spinnerValue");
     } else if (call.method == "rejectButtonClick") {
-      print("VRS reject button clicked!");
-    } else if(call.method == "ignoreButtonClick"){
-      print("VRS Ignore button clicked!");
-    } else if(call.method == "acceptAndClockOutClick") {
-      print("VRS accept and clock out clicked");
+      final spinnerValue = call.arguments as String?;
+      print("VRS Reject button clicked with spinner value: $spinnerValue");
+    } else if (call.method == "ignoreButtonClick") {
+      final spinnerValue = call.arguments as String?;
+      print("VRS Ignore button clicked with spinner value: $spinnerValue");
+    } else if (call.method == "acceptAndClockOutClick") {
+      final spinnerValue = call.arguments as String?;
+      print("VRS Accept and Clock Out clicked with spinner value: $spinnerValue");
+    } else if (call.method == "timeoutCallback") {
+      print("VRS Activity timed out");
     }
   }
 
@@ -67,7 +73,9 @@ class _MyAppState extends State<MyApp> {
           visitorName: "Varshil Soni",
           comments: "Next time this man will come make sure not will come with cigarette.",
           from: "ABC Solution",
-          purpose: "Discuss regarding develop new mobile application.");
+          purpose: "Discuss regarding develop new mobile application.",
+          email: "varshil.s@yudiz.com",
+          logo: "https://picsum.photos/300");
       String? data = await _fullScreenNotificationPlugin
           .showFullScreenNotification(detail: detail);
       print('Data :: $data');
@@ -109,7 +117,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
         visitorName: "Varshil Soni",
         comments: "Next time this man will come make sure not will come with cigarette.",
         from: "ABC Solution",
-        purpose: "Discuss regarding develop new mobile application.");
+        purpose: "Discuss regarding develop new mobile application.",
+        email: "varshil.s@yudiz.com",
+        logo: "https://picsum.photos/3000");
         String? data = await fullScreenNotificationPlugin
         .showFullScreenNotification(detail: detail);
     print('Data :: $data');

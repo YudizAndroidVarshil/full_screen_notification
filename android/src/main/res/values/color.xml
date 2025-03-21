@@ -13,6 +13,9 @@
     <color name="rejectTextColor">#B83232</color>
     <color name="ignoreTextColor">#5E4F05</color>
     <color name="acceptClockoutText">#086AA1</color>
+    <color name="grey">#DFE3E7</color>
+    <color name="lightGrey">#f6f6f6</color>
+    <color name="divider">#EAEEF5</color>
 
 
 </resources>
