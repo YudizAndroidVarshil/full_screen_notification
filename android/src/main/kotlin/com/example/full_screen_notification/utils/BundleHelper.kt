@@ -1,6 +1,7 @@
 package com.example.full_screen_notification.utils
 
 import android.os.Bundle
+import android.util.Log
 import java.io.Serializable
 
 object BundleHelper {
@@ -15,9 +16,8 @@ object BundleHelper {
                 is Double -> bundle.putDouble(key, value)
                 is Float -> bundle.putFloat(key, value)
                 is Serializable -> bundle.putSerializable(key, value)
-                // Add other types as necessary
                 else -> {
-                    // Optionally handle unsupported types or log a warning.
+                    Log.e("VRS","unsupported type")
                 }
             }
         }

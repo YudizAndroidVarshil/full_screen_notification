@@ -1,8 +1,10 @@
 package com.example.full_screen_notification
 
+import android.app.KeyguardManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.core.app.NotificationCompat
 import com.example.full_screen_notification.utils.BundleHelper
@@ -41,12 +43,24 @@ class FullScreenNotificationPlugin: FlutterPlugin, MethodCallHandler {
     }
 
     private fun showFullScreenNotification(detail: Map<String, Any>) {
-        val extras = with(BundleHelper) { detail.toBundle() }
+        val keyguardManager = context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
+        val isDeviceLocked = keyguardManager.isKeyguardLocked
 
+        val baseBundle = with(BundleHelper) { detail.toBundle() }
+
+        val extrasForFullScreen = Bundle().apply {
+            putAll(baseBundle)
+            putBoolean("autoPlayRingtone", isDeviceLocked)
+        }
+
+        val extrasForAction = Bundle().apply {
+            putAll(baseBundle)
+            putBoolean("autoPlayRingtone", false)
+        }
 
         val fullScreenIntent = Intent(context, FullScreenActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            putExtras(extras)
+            putExtras(extrasForFullScreen)
         }
 
         val fullScreenPendingIntent = PendingIntent.getActivity(
@@ -57,13 +71,16 @@ class FullScreenNotificationPlugin: FlutterPlugin, MethodCallHandler {
 
         val actionIntent = Intent(context, FullScreenActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-            putExtras(extras)
+            putExtras(extrasForAction)
         }
+
         val actionPendingIntent = PendingIntent.getActivity(
-            context, 1, // Use a different request code to distinguish from the full-screen intent.
+            context, 1,
             actionIntent,
             PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
         )
+
+        val soundUri = Uri.parse("android.resource://${context.packageName}/${R.raw.notification_sound}")
 
         val notificationBuilder = NotificationCompat.Builder(context, NotificationHelper.CHANNEL_ID)
             .setSmallIcon(android.R.drawable.ic_dialog_info)
@@ -71,6 +88,7 @@ class FullScreenNotificationPlugin: FlutterPlugin, MethodCallHandler {
             .setContentText("${detail["name"] ?: "Someone"} is calling...")
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setCategory(NotificationCompat.CATEGORY_CALL)
+            .setSound(soundUri)
             .addAction(
                 android.R.drawable.ic_menu_call,
                 "View request",
@@ -78,8 +96,6 @@ class FullScreenNotificationPlugin: FlutterPlugin, MethodCallHandler {
             )
             .setFullScreenIntent(fullScreenPendingIntent, true)
             .setAutoCancel(true)
-
-
 
         val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
         notificationManager.notify(1, notificationBuilder.build())
