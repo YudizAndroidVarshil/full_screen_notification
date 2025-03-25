@@ -71,9 +71,9 @@ class _MyAppState extends State<MyApp> {
           image: 'https://picsum.photos/200',
           userId: '123',
           visitorName: "Varshil Soni",
-          comments: "Next time this man will come make sure not will come with cigarette.",
+          comments: "",
           from: "ABC Solution",
-          purpose: "Discuss regarding develop new mobile application.",
+          purpose: "",
           email: "varshil.s@yudiz.com",
           logo: "https://picsum.photos/300");
       String? data = await _fullScreenNotificationPlugin
@@ -115,9 +115,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
         image: 'https://picsum.photos/200',
         userId: '123',
         visitorName: "Varshil Soni",
-        comments: "Next time this man will come make sure not will come with cigarette.",
+        comments: "",
         from: "ABC Solution",
-        purpose: "Discuss regarding develop new mobile application.",
+        purpose: "",
         email: "varshil.s@yudiz.com",
         logo: "https://picsum.photos/3000");
         String? data = await fullScreenNotificationPlugin

@@ -10,6 +10,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.LinearLayout
@@ -76,22 +77,34 @@ class FullScreenActivity : AppCompatActivity() {
         val extras = intent.extras
         if (extras != null) {
 
-            val userName = extras.getString("userName", "Unknown Visitor")
+            val userName = extras.getString("userName", "Unknown")
             val visitorName = extras.getString("visitorName", "Unknown Visitor")
-            val image = extras.getString("image", "Unknown Visitor")
-            val logo = extras.getString("logo", "Unknown Visitor")
-            val from = extras.getString("from", "Unknown Visitor")
-            val purpose = extras.getString("purpose", "Unknown Visitor")
-            val comments = extras.getString("comments", "Unknown Visitor")
-            val email = extras.getString("email", "Unknown Visitor")
+            val image = extras.getString("image", "")
+            val logo = extras.getString("logo", "")
+            val from = extras.getString("from", "Unknown Address")
+            val purpose = extras.getString("purpose", "")
+            val comments = extras.getString("comments", "")
+            val email = extras.getString("email", "Unknown")
 
 
             binding.tvVisitorName.text = visitorName
             binding.tvEmail.text = email
             binding.tvCurrentUserName.text = userName
             binding.tvFrom.text = from
-            binding.tvPurpose.text = purpose
-            binding.tvComments.text = comments
+            if(purpose.isNotEmpty()){
+                binding.llPurpose.visibility = View.VISIBLE
+                binding.tvPurpose.text = purpose
+            } else {
+                binding.llPurpose.visibility = View.GONE
+            }
+
+            if(comments.isNotEmpty()){
+                binding.clComments.visibility = View.VISIBLE
+                binding.tvComments.text = comments
+            } else {
+                binding.clComments.visibility = View.GONE
+            }
+
             Glide.with(this)
                 .load(image)
                 .centerCrop()

@@ -82,7 +82,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Hello "
+                                android:text="@string/hello"
                                 android:textSize="16sp"
                                 android:textStyle="bold"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +107,6 @@
                             android:id="@+id/visitor_card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
                             android:layout_marginTop="10dp"
                             android:theme="@style/Theme.MaterialComponents.Light"
                             app:cardCornerRadius="6dp"
@@ -166,9 +165,7 @@
                                         android:textSize="14sp"
                                         tools:text="varshil.s@yudiz.com" />
 
-
                                 </LinearLayout>
-
 
                                 <LinearLayout
                                     android:id="@+id/ll_from"
@@ -184,7 +181,7 @@
                                         android:id="@+id/from_label"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="From:"
+                                        android:text="@string/from"
                                         android:textColor="@color/titleColor"
                                         android:textStyle="bold"
                                         app:layout_constraintStart_toStartOf="parent" />
@@ -194,10 +191,10 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="2dp"
-                                        android:text="ABC Solution"
                                         android:textColor="@color/valueColor"
                                         app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toBottomOf="@+id/from_label" />
+                                        app:layout_constraintTop_toBottomOf="@+id/from_label"
+                                        tools:text="ABC Solution"/>
 
                                 </LinearLayout>
 
@@ -216,7 +213,7 @@
                                         android:id="@+id/purpose_label"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Purpose:"
+                                        android:text="@string/purpose"
                                         android:textColor="@color/titleColor"
                                         android:textStyle="bold" />
 
@@ -225,7 +222,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="2dp"
-                                        android:text="Discuss regarding develop new mobile application."
+                                        tools:text="Discuss regarding develop new mobile application."
                                         android:textColor="@color/valueColor" />
                                 </LinearLayout>
 
@@ -253,6 +250,7 @@
 
 
                             <androidx.constraintlayout.widget.ConstraintLayout
+                                android:id="@+id/cl_comments"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="12dp">
@@ -261,7 +259,7 @@
                                     android:id="@+id/comments_label"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Comments:"
+                                    android:text="@string/comments"
                                     android:textStyle="bold"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
@@ -290,7 +288,7 @@
                             android:ellipsize="end"
                             android:gravity="center_horizontal"
                             android:maxLines="2"
-                            android:text="Meet you"
+                            android:text="@string/meet_you"
                             android:textColor="@color/valueColor"
                             android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="parent"
@@ -305,11 +303,12 @@
                             app:layout_constraintTop_toBottomOf="@+id/tvMessage">
 
                             <TextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
                                 android:maxLines="2"
-                                android:text="I am setting at (Select your location)" />
+                                android:layout_marginEnd="10dp"
+                                android:text="@string/seating_at" />
 
                             <Spinner
                                 android:id="@+id/spn_meeting_at"
@@ -360,7 +359,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
-                                    android:text="Accept"
+                                    android:text="@string/accept"
                                     android:textColor="@color/acceptTextColor"
                                     android:textSize="12sp"
                                     android:textStyle="bold" />
@@ -390,7 +389,7 @@
                                     android:id="@+id/btnDeclineText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Reject"
+                                    android:text="@string/reject"
                                     android:textColor="@color/rejectTextColor"
                                     android:textSize="12sp"
                                     android:textStyle="bold" />
@@ -421,7 +420,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center_vertical"
-                                    android:text="Ignore"
+                                    android:text="@string/ignore"
                                     android:textColor="@color/ignoreTextColor"
                                     android:textSize="12sp"
                                     android:textStyle="bold" />
@@ -458,7 +457,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
-                                android:text="Accept (Clock Out)"
+                                android:text="@string/accept_clock_out"
                                 android:textColor="@color/acceptClockoutText"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
